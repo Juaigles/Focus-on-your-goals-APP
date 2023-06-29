@@ -3,16 +3,17 @@ import './App.css';
 import Header from "./components/shared/Header"
 import Main from "./components/shared/Main"
 import Footer from "./components/shared/Footer"
+import Goal from './components/list/Goal';
 
 
 function App() {
   return (
-    <div className="App">
-      <h1 className='text-3xl font-bold underline'>
-        Help World
-      </h1>
+    <div >
+     
       <Header></Header>
-      <Main></Main>
+      <Main>
+        <Goal></Goal>
+      </Main>
       <Footer></Footer>
     </div>
   );
