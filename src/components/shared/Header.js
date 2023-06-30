@@ -15,7 +15,7 @@ export default function Header() {
       </div>
       <nav>
         <Browser
-            href="/perfil" 
+            to="/perfil" 
             Icono={PerfilSVG} />
       </nav>
     </header>

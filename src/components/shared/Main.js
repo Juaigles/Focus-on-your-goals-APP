@@ -8,10 +8,10 @@ export default function Main({ children }) {
   return (
     <div className={styles.app}>
       <aside className={styles.aside}>
-        <Browser href={"/list"} text="Lista de Metas"
+        <Browser to={"/list"} text="Lista de Metas"
           Icono={ListaSVG} />
         
-        <Browser href={"/create"} text="Nueva Meta"
+        <Browser to={"/new"} text="Nueva Meta"
           Icono={NuevaSVG} />
     
       </aside>
