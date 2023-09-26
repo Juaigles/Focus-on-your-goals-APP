@@ -1,39 +1,14 @@
+import { useContext } from 'react';
 import Goal from './Goal'
+import { Context } from '../../services/memoryContext';
 
-const listMock = [{
-    "id" : "1",
-    "detalles": "Correr por 30 minutos",
-    "periodo": "día",
-    "eventos": 1,
-    "icono": "🏃",
-    "meta":365,
-    "plazo":"2030-01-01",
-    "compeltado":5
-},
-{
-    "id" : "2",
-    "detalles": "Leer libros",
-    "periodo": "año",
-    "eventos": 6,
-    "icono": "📚",
-    "meta":6,
-    "plazo":"2030-01-01",
-    "compeltado":0
-},
-{
-    "id" : "3",
-    "detalles": "Relajacion Jackobson",
-    "periodo": "mes",
-    "eventos": 12,
-    "icono": "🧘‍♀️",
-    "meta":12,
-    "plazo":"2030-01-01",
-    "compeltado":0
-}]
+
 
 function List() {
+    const [state, send] = useContext(Context)
+   
     return ( 
-        listMock.map(goal =>  <Goal {...goal}></Goal> )
+        state.order.map(id =>  <Goal key={id} {...state.objects[id]}></Goal> )
        
      );
 }

@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../services/memoryContext";
 import styles from "./Details.module.css";
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useEffect, useLayoutEffect, useState, useContext} from "react";
 
 function Details() {
 
@@ -8,26 +10,33 @@ function Details() {
         eventos: 1,
         periodo: 'semana',
         icono: '',
+       
         meta: 52,
         plazo: '2022-01-01',
         completado : 0,
     });
+
+    const [state, send] = useContext(Context)
 
     const {detalles,eventos,periodo,icono,meta,plazo,completado} = form
     const onChange = (event, prop) => {
         setForm(estado =>({...estado,[prop]:event.target.value}))
     }
 
+    const navigate = useNavigate()
+
     useEffect(() =>{
         // console.log(form);
     },[form])
 
     const create = async () => {
-        console.log(form)
+        // console.log(form);
+        send({type: 'create', goal: form})
+        navigate('/list')
     }
 
     const frequencyOptions = ["día","semna","mes","año"];
-    const iconos = ["💻","💴","📚","🏃","🧘‍♀️"];
+    const iconos = ["->","💻","💴","📚","🏃","🧘‍♀️"];
   return (
     <div className="shadow">
       <form className="p-4">
@@ -49,7 +58,7 @@ function Details() {
                 onChange={e => onChange(e,'eventos')}/>
 
                 <select className="input" value={periodo} onChange={e => onChange(e,'periodo')}>
-                    {frequencyOptions.map(option => <option value={option}>{option}</option>)}
+                    {frequencyOptions.map((option, index) => <option key={index} value={option}>{option}</option>)}
                 </select>
             </div>
         </label>
@@ -84,7 +93,7 @@ function Details() {
         <label className="label">
             Escoge un icono para la meta
             <select className="input" value={icono} onChange={e => onChange(e,'icono')}>
-                {iconos.map(option => <option value={option}>{option}</option>)}
+                {iconos.map((option,index) => <option key={index} value={option}>{option}</option>)}
             </select>
         </label>
       </form>

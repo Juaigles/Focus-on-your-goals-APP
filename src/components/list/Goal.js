@@ -2,7 +2,7 @@ import styles from './Goal.module.css';
 
 
 
-function Goal({icono, eventos, detalles,periodo,meta,compeltado}) {
+function Goal({icono, eventos, detalles,periodo,meta,completado}) {
 
     return ( 
     <>
@@ -16,9 +16,9 @@ function Goal({icono, eventos, detalles,periodo,meta,compeltado}) {
             </div>
             <div className='flex'>
                 <div className='relative m-2 mx-5'>
-                    <p className='text-center'>{compeltado} de {meta}</p>
+                    <p className='text-center'>{completado} de {meta}</p>
                     <div className={styles.bar1}>
-                        <div style={{width: `${Math.round((compeltado/meta) * 100)}%`}}
+                    <div style={{width: `${(completado/meta) * 100 < 100 ? Math.round((completado/meta) * 100) : 100}%`}}
                          className={styles.bar2}></div>
                     </div>
                 </div>
