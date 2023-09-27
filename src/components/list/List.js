@@ -1,14 +1,18 @@
 import { useContext } from 'react';
 import Goal from './Goal'
 import { Context } from '../../services/memoryContext';
+import { Outlet } from 'react-router-dom';
 
 
 
 function List() {
-    const [state, send] = useContext(Context)
+    const [state] = useContext(Context)
    
     return ( 
-        state.order.map(id =>  <Goal key={id} {...state.objects[id]}></Goal> )
+        <>
+            {state.order.map(id =>  <Goal key={id} {...state.objects[id]}></Goal> )}
+            <Outlet/>
+        </>
        
      );
 }

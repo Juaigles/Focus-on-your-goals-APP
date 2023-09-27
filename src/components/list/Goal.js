@@ -1,12 +1,13 @@
 import styles from './Goal.module.css';
+import {Link} from 'react-router-dom'
 
 
 
-function Goal({icono, eventos, detalles,periodo,meta,completado}) {
+function Goal({id,icono, eventos, detalles,periodo,meta,completado}) {
 
     return ( 
     <>
-        <div className={styles.meta + " shadow"}>
+        <Link to={`/list/${id}`} className={styles.meta + " shadow"}>
             <div className='flex items-center'>
                 <div className={styles.icono}>{icono}</div>
                 <p className="text-xl ml-5 mr-10">{eventos}
@@ -16,7 +17,7 @@ function Goal({icono, eventos, detalles,periodo,meta,completado}) {
             </div>
             <div className='flex'>
                 <div className='relative m-2 mx-5'>
-                    <p className='text-center'>{completado} de {meta}</p>
+                    <p className='text-center'>{completado > meta ? completado = meta : completado}  de {meta}</p>
                     <div className={styles.bar1}>
                     <div style={{width: `${(completado/meta) * 100 < 100 ? Math.round((completado/meta) * 100) : 100}%`}}
                          className={styles.bar2}></div>
@@ -24,7 +25,7 @@ function Goal({icono, eventos, detalles,periodo,meta,completado}) {
                 </div>
                 <button className='button button--gray'>Completado</button>
             </div>
-        </div>
+        </Link>
     </> 
     );
 }

@@ -2,7 +2,7 @@ import Browser from "./Browser";
 import { ReactComponent as ListaSVG } from "../../Media/img/lista.svg";
 import { ReactComponent as NuevaSVG } from "../../Media/img/nueva.svg";
 import styles from "./Main.module.css";
-import stylesHeader from "./Header.module.css";
+
 
 export default function Main({ children }) {
   return (
